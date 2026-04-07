@@ -1,4 +1,4 @@
-import 'package:clima/screens/home.dart';
+import 'package:clima_aura/screens/home.dart';
 import 'package:flutter/material.dart';
 
 void main() {
