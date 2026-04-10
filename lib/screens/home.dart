@@ -12,6 +12,12 @@ class _HomeState extends State<Home> {
   GeolocatorPlatform geolocatorPlatform = GeolocatorPlatform.instance;
   LocationPermission? permission;
 
+  @override
+  void initState() {
+    super.initState();
+    getPermission();
+  }
+
   void getPermission()async{
     permission =await geolocatorPlatform.checkPermission();
     if(permission == LocationPermission.denied){
