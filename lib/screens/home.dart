@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
-
 import '../services/location.dart';
+import 'package:http/http.dart' as http;
 
 class Home extends StatefulWidget {
   const Home({Key? key}) : super(key: key);
@@ -20,6 +20,17 @@ class _HomeState extends State<Home> {
     getPermission();
   }
 
+  void getData()async{
+    http.Response response = await http.get(Uri.parse("https://api.openweathermap.org/data/2.5/weather?lat=44.34&lon=10.99&appid=a11aa2a251d8621b8faa7f477d0c6405"));
+    // print(response.body);
+    if(response.statusCode == 200){
+      String data = response.body;
+      print(data);
+    }else{
+      print(response.statusCode); // need to check before respone.body in order not to crash the app
+    }
+  }
+  
   void getPermission()async{
     permission =await geolocatorPlatform.checkPermission();
     if(permission == LocationPermission.denied){
@@ -50,6 +61,7 @@ class _HomeState extends State<Home> {
 
   @override
   Widget build(BuildContext context) {
+    getData();
     return Scaffold(
       body: SafeArea(
         child: Center(
