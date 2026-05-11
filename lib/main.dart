@@ -1,10 +1,8 @@
 import 'package:clima_aura/screens/home.dart';
 import 'package:clima_aura/screens/manage_city.dart';
 import 'package:clima_aura/screens/setting.dart';
+import 'package:clima_aura/utilities/constants.dart';
 import 'package:flutter/material.dart';
-
-import 'components/loading_widget.dart';
-import 'components/setting_icon.dart';
 
 void main() {
   runApp(const MyApp());
@@ -18,7 +16,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
-      theme: ThemeData(scaffoldBackgroundColor: Colors.blue[300]),
+      theme: ThemeData(scaffoldBackgroundColor: kMainBackgroundColor),
       initialRoute: '/',
       routes: {
         '/': (context) => Home(),
